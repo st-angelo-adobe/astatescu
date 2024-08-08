@@ -49,7 +49,7 @@ export function decorateArea(area = document) {
       eagerLoad(document, 'img');
       return;
     }
-  
+
     // First image of first row
     eagerLoad(marquee, 'div:first-child img');
     // Last image of last column of last row
@@ -59,4 +59,20 @@ export function decorateArea(area = document) {
 
 export async function useMiloSample() {
   const { createTag } = await import(`${getLibs()}/utils/utils.js`);
+}
+
+export function initSidekick() {
+  const initPlugins = async () => {
+    const { default: init1 } = await import('./sidekick.js');
+    const { default: init2 } = await import('./sidekick2.js');
+    init1();
+    init2();
+  };
+  if (document.querySelector('helix-sidekick')) {
+    initPlugins();
+  } else {
+    document.addEventListener('sidekick-ready', () => {
+      initPlugins();
+    });
+  }
 }

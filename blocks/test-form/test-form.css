@@ -1,0 +1,120 @@
+.test-form-container {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.test-form-title {
+  margin: 0;
+}
+
+.test-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.test-form-control {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  padding: 0.25rem;
+  box-sizing: border-box;
+}
+
+.fragment {
+  padding: 0;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  padding-left: 0;
+}
+
+.test-form-date-of-birth-container {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.test-form-control[data-size='3'] {
+  flex-basis: 25%;
+}
+
+.test-form-control[data-size='4'] {
+  flex-basis: 33.3333%;
+}
+
+.test-form-control[data-size='6'] {
+  flex-basis: 50%;
+}
+
+.test-form-separator {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.test-form-disclaimer {
+  font-style: italic;
+  font-size: 14px;
+  margin: 0 0 1rem 0;
+}
+
+.test-form-submit {
+  margin: auto;
+  cursor: pointer;
+}
+
+.test-form-input:not([type='checkbox']) {
+  appearance: none;
+  outline: 0;
+  padding: 0.25rem 0.75rem;
+  font-size: 16px;
+  line-height: 30px;
+  border: none;
+  box-shadow:
+    inset 1px 1px 0 0 #8e8e8e,
+    inset -1px -1px 0 0 #8e8e8e;
+}
+
+.test-form-input:not([type='checkbox']):focus,
+.test-form-input:not([type='checkbox']):active {
+  box-shadow:
+    inset 1px 1px 0 0 rgb(0 157 245 / 60%),
+    inset -1px -1px 0 0 rgb(0 157 245 / 60%),
+    inset 1px 1px 0 0 rgb(0 157 245 / 60%),
+    inset -1px -1px 0 0 rgb(0 157 245 / 60%),
+    0 0 0.125rem rgb(82 168 236 / 60%);
+}
+
+.test-form-input:not([type='checkbox']):not(:focus):not(:active):invalid {
+  box-shadow:
+    inset 1px 1px 0 0 #d9534f,
+    inset -1px -1px 0 0 #d9534f;
+}
+
+.test-form-input:not([type='checkbox']):invalid {
+  background-image: url(../../img/icons/test-form-error.svg);
+  background-position: 96%;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-right: 2px;
+}
+
+select.test-form-input {
+  background-image: url(../../img/icons/select-arrows.svg);
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: 1em 1em;
+  padding-right: 2px;
+}
+
+.test-form-label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.test-form-label:has(~ input:required)::after {
+  content: ' *';
+}

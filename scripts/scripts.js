@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { setLibs, decorateArea } from './utils.js';
+import { setLibs, initSidekick, decorateArea } from './utils.js';
 
 // Add project-wide style path here.
 const STYLES = '';
@@ -60,5 +60,10 @@ const miloLibs = setLibs(LIBS);
   const { loadArea, setConfig } = await import(`${miloLibs}/utils/utils.js`);
   const config = setConfig({ ...CONFIG, miloLibs });
   console.log(config);
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('href', '/styles/styles.css');
+  document.head.appendChild(link);
   await loadArea();
+  initSidekick();
 }());
