@@ -8,6 +8,30 @@ export default async function init(el) {
 
   const { createTag } = await import(`${miloLibs}/utils/utils.js`);
 
+  const getLabel = (row) => {
+    const labelColumn = row.querySelector('div:nth-child(2)');
+    const lis = [...labelColumn.querySelectorAll('li')];
+    if (lis.length === 0) return labelColumn.textContent;
+    return lis.map((li) => li.textContent);
+  };
+
+  const labels = {
+    title: getLabel(content[0]),
+    firstName: getLabel(content[1]),
+    lastName: getLabel(content[2]),
+    dateOfBirth: getLabel(content[3]),
+    day: getLabel(content[4]),
+    month: getLabel(content[5]),
+    year: getLabel(content[6]),
+    profession: getLabel(content[7]),
+    professions: getLabel(content[8]),
+    hasSwag: getLabel(content[9]),
+    disclaimer: getLabel(content[10]),
+    submit: getLabel(content[11]),
+  };
+
+  console.log(labels);
+
   const getNoProfitControl = (params) => {
     const {
       type, name, label, placeholder, required, options,
