@@ -20,14 +20,11 @@ export default async function init(el) {
     firstName: getLabel(content[1]),
     lastName: getLabel(content[2]),
     dateOfBirth: getLabel(content[3]),
-    day: getLabel(content[4]),
-    month: getLabel(content[5]),
-    year: getLabel(content[6]),
-    profession: getLabel(content[7]),
-    professions: getLabel(content[8]),
-    hasSwag: getLabel(content[9]),
-    disclaimer: getLabel(content[10]),
-    submit: getLabel(content[11]),
+    profession: getLabel(content[4]),
+    professions: getLabel(content[5]),
+    hasSwag: getLabel(content[6]),
+    disclaimer: getLabel(content[7]),
+    submit: getLabel(content[8]),
   };
 
   console.log(labels);
@@ -81,7 +78,7 @@ export default async function init(el) {
   });
 
   const dateOfBirthTag = getNoProfitControl({
-    type: 'datetime-local',
+    type: 'date',
     name: 'dateOfBirth',
     label: labels.dateOfBirth,
     placeholder: labels.dateOfBirth,
