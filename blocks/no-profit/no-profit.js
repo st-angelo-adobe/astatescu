@@ -62,7 +62,51 @@ export default async function init(el) {
     return controlTag;
   };
 
-  el.append('lol');
+  const containerTag = createTag('div', { class: 'no-profit-container' });
+
+  const firstNameTag = getNoProfitControl({
+    type: 'text',
+    name: 'firstName',
+    label: labels.firstName,
+    placeholder: labels.firstName,
+    required: true,
+  });
+
+  const lastNameTag = getNoProfitControl({
+    type: 'text',
+    name: 'lastName',
+    label: labels.lastName,
+    placeholder: labels.lastName,
+    required: true,
+  });
+
+  const dateOfBirthTag = getNoProfitControl({
+    type: 'datetime-local',
+    name: 'dateOfBirth',
+    label: labels.dateOfBirth,
+    placeholder: labels.dateOfBirth,
+    required: true,
+  });
+
+  const professionTag = getNoProfitControl({
+    type: 'select',
+    name: 'profession',
+    label: labels.profession,
+    placeholder: labels.profession,
+    required: true,
+    options: labels.professions.map((profession) => ({ label: profession, value: profession })),
+  });
+
+  const hasSwagTag = getNoProfitControl({
+    type: 'checkbox',
+    name: 'hasSwag',
+    label: labels.hasSwag,
+    placeholder: labels.hasSwag,
+  });
+
+  containerTag.append(firstNameTag, lastNameTag, dateOfBirthTag, professionTag, hasSwagTag);
+
+  el.append(containerTag);
 }
 
 const getOrganizations = () => Promise.resolve([]);
