@@ -1,0 +1,4 @@
+.rating-star {
+  appearance: none;
+  background-image: url('../../img/icons/star-outline.svg');
+}

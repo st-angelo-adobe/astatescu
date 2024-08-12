@@ -33,11 +33,13 @@ export default async function init(el) {
     const {
       type, name, label, placeholder, required, options,
     } = params;
+    const baseParams = { name, placeholder };
+    if (required) baseParams.required = 'required';
     const controlTag = createTag('div', { class: 'no-profit-control' });
     const labelTag = createTag('label', { class: 'no-profit-label', for: name }, label);
     let inputTag;
     if (type === 'select') {
-      inputTag = createTag('select', { class: 'no-profit-input', name, placeholder, required });
+      inputTag = createTag('select', { class: 'no-profit-input', ...baseParams });
       options.forEach((option) => {
         const optionTag = createTag(
           'option',
@@ -50,16 +52,14 @@ export default async function init(el) {
       inputTag = createTag('input', {
         class: 'no-profit-input',
         type,
-        name,
-        placeholder,
-        required,
+        ...baseParams,
       });
     }
     controlTag.append(labelTag, inputTag);
     return controlTag;
   };
 
-  const containerTag = createTag('div', { class: 'no-profit-container' });
+  const containerTag = createTag('form', { class: 'no-profit-form' });
 
   const firstNameTag = getNoProfitControl({
     type: 'text',
@@ -100,6 +100,8 @@ export default async function init(el) {
     label: labels.hasSwag,
     placeholder: labels.hasSwag,
   });
+
+  const submitTag = createTag('button', { class: 'no-profit-submit' }, labels.submit);
 
   containerTag.append(firstNameTag, lastNameTag, dateOfBirthTag, professionTag, hasSwagTag);
 
